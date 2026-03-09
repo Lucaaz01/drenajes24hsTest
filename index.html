@@ -1,1 +1,880 @@
 <h1>Github pages test</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drenaje Express 24 hs| Servicio de Confianza</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #0b1f3a;
+      --blue: #1a4a7a;
+      --steel: #2a6496;
+      --accent: #e8a020;
+      --accent2: #f0c060;
+      --light: #f4f7fb;
+      --white: #ffffff;
+      --gray: #8099b0;
+      --text: #1a2e42;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 6%;
+      background: rgba(11, 31, 58, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--accent);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: #b0c4d8;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent);
+      color: var(--navy) !important;
+      padding: 8px 20px;
+      border-radius: 3px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--accent2); color: var(--navy) !important; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(160deg, rgba(11,31,58,0.92) 40%, rgba(26,74,122,0.80) 100%),
+        url('https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=1600&q=80') center/cover no-repeat;
+      display: flex; align-items: center;
+      padding: 120px 6% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -2px; left: 0; right: 0; height: 80px;
+      background: var(--light);
+      clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+    .hero-content { max-width: 700px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(232,160,32,0.15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-badge::before { content: '●'; font-size: 0.5rem; }
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      line-height: 0.95;
+      color: var(--white);
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    h1 span { color: var(--accent); }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: #a8c0d8;
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 40px;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--accent);
+      color: var(--navy);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 16px 32px;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent;
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 16px 32px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 3px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-stats {
+      position: absolute; bottom: 100px; right: 6%;
+      display: flex; flex-direction: column; gap: 12px;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      padding: 14px 20px;
+      border-radius: 4px;
+      text-align: center;
+      min-width: 120px;
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      color: #a8c0d8;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ===== URGENCY BANNER ===== */
+    .urgency {
+      background: var(--navy);
+      padding: 18px 6%;
+      display: flex; align-items: center; justify-content: center; gap: 20px;
+      text-align: center; flex-wrap: wrap;
+    }
+    .urgency-icon { font-size: 1.5rem; }
+    .urgency p {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .urgency strong { color: var(--accent); }
+    .urgency a {
+      background: var(--accent);
+      color: var(--navy);
+      padding: 8px 20px;
+      border-radius: 3px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .urgency a:hover { background: var(--accent2); }
+
+    /* ===== SECTION HEADER ===== */
+    .section { padding: 90px 6%; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--navy);
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+    h2 span { color: var(--steel); }
+    .section-desc {
+      color: var(--gray);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 14px auto 0;
+      line-height: 1.7;
+    }
+
+    /* ===== SERVICES ===== */
+    #servicios { background: var(--light); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid #dce8f2;
+      border-radius: 8px;
+      padding: 36px 28px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--steel), var(--accent));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(11,31,58,0.12); border-color: #b0cce0; }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+    .service-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    .service-desc {
+      font-size: 0.9rem;
+      color: #6a88a0;
+      line-height: 1.65;
+    }
+
+    /* ===== WHY US ===== */
+    #nosotros { background: var(--navy); }
+    #nosotros h2 { color: var(--white); }
+    #nosotros .section-desc { color: #7a99b8; }
+    #nosotros .section-label { color: var(--accent); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .why-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 30px 24px;
+      transition: background 0.2s;
+    }
+    .why-card:hover { background: rgba(255,255,255,0.09); }
+    .why-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .why-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    .why-desc { font-size: 0.87rem; color: #7a99b8; line-height: 1.6; }
+
+    /* ===== PROCESS ===== */
+    #proceso { background: var(--white); }
+    .process-steps {
+      display: flex;
+      gap: 0;
+      max-width: 1000px; margin: 0 auto;
+      position: relative;
+      flex-wrap: wrap;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 36px; left: 5%; right: 5%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--steel), var(--accent));
+      z-index: 0;
+    }
+    .step {
+      flex: 1; min-width: 160px;
+      text-align: center;
+      padding: 0 16px;
+      position: relative; z-index: 1;
+    }
+    .step-circle {
+      width: 72px; height: 72px;
+      background: var(--navy);
+      border: 3px solid var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--accent);
+      margin: 0 auto 20px;
+    }
+    .step-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .step-desc { font-size: 0.82rem; color: var(--gray); line-height: 1.5; }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonios { background: var(--light); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .testi-card {
+      background: var(--white);
+      border: 1px solid #dce8f2;
+      border-radius: 8px;
+      padding: 30px 28px;
+    }
+    .stars { color: var(--accent); font-size: 1rem; margin-bottom: 14px; }
+    .testi-text {
+      font-size: 0.95rem;
+      color: #4a6880;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    .testi-author {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .testi-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--steel), var(--navy));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+    .testi-name { font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+    .testi-loc { font-size: 0.78rem; color: var(--gray); }
+
+    /* ===== CONTACT ===== */
+    #contacto { background: var(--navy); }
+    #contacto h2 { color: var(--white); }
+    #contacto .section-desc { color: #7a99b8; }
+    #contacto .section-label { color: var(--accent); }
+    .contact-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .contact-icon-box {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: rgba(232,160,32,0.15);
+      border: 1px solid rgba(232,160,32,0.3);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .contact-item-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .contact-item-val {
+      font-size: 1.05rem;
+      color: var(--white);
+      font-weight: 500;
+    }
+    .contact-item-sub { font-size: 0.82rem; color: #7a99b8; margin-top: 2px; }
+
+    /* FORM */
+    .form-group { margin-bottom: 18px; }
+    label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #7a99b8;
+      margin-bottom: 6px;
+    }
+    input, select, textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+      padding: 12px 16px;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    input::placeholder, textarea::placeholder { color: #4a6880; }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+    select option { background: var(--navy); }
+    textarea { resize: vertical; min-height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .btn-submit {
+      width: 100%;
+      background: var(--accent);
+      color: var(--navy);
+      border: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 6px;
+    }
+    .btn-submit:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    /* ===== TRABAJOS REALIZADOS (GALLERY) ===== */
+    #trabajos { background: var(--light); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: #dce8f2;
+      border: 1px solid #dce8f2;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(11,31,58,0.15);
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-item .gallery-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(11,31,58,0.85));
+      padding: 20px 16px 14px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    .gallery-overlay span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.5px;
+    }
+    .gallery-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%; height: 100%;
+      color: var(--gray);
+      font-size: 0.9rem;
+      text-align: center;
+      gap: 8px;
+    }
+    .gallery-placeholder-icon {
+      font-size: 2.5rem;
+      opacity: 0.5;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #060f1d;
+      padding: 30px 6%;
+      display: flex;
+      align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+    .footer-logo span { color: var(--accent); }
+    footer p { font-size: 0.8rem; color: #4a6880; }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero-stats { display: none; }
+      .nav-links { display: none; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      .process-steps::before { display: none; }
+    }
+    .whatsapp-float{
+position: fixed;
+width: 160px;
+height: 160px;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+bottom: 5px;
+right: 70px;
+z-index: 999;
+cursor: pointer;
+}
+
+.whatsapp-float img{
+width: 150%;
+height: 100%;
+object-fit: cover;
+}
+
+.whatsapp-float:hover{
+transform: scale(1.1);
+transition: 0.2s;
+}
+  </style>
+</head>
+<a href="https://wa.me/5491127804960" class="whatsapp-float" target="_blank">
+  <img src="wsp.png" alt="WhatsApp">
+</a>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Drenaje<span>24hs</span></div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#trabajos">Trabajos</a></li>
+    <li><a href="#contacto" class="nav-cta">Solicitar Servicio</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Servicio Disponible 24/7</div>
+    <h1>Drenaje 24hs<br><span>De Confianza</span></h1>
+    <p class="hero-sub">Soluciones rápidas y duraderas para tu hogar o negocio. Trabajamos con precisión, materiales de primera calidad y respaldados por años de experiencia.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">📞 Solicitar Presupuesto</a>
+      <a href="#servicios" class="btn-outline">Ver Servicios →</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-num">+1500</div>
+      <div class="stat-label">Clientes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">Años exp.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Emergencias</div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCY BANNER -->
+<div class="urgency">
+  <span class="urgency-icon">🚨</span>
+  <p><strong>¿Emergencia de plomería?</strong> Atendemos urgencias en el día — sin demoras.</p>
+  <a href="tel:+5491127804960">Llamar ahora</a>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="servicios">
+  <div class="section-header">
+    <div class="section-label">Lo que hacemos</div>
+    <h2>Nuestros <span>Servicios</span></h2>
+    <p class="section-desc">Servicio profesional con maquinaria especializada para todo tipo de obstrucciones.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🔧</div>
+      <div class="service-title">Destapaciones Cloacales</div>
+      <p class="service-desc">Destapación de cloacas, cámaras, ramales y columnas internas. Ideal para rebalses, retornos y malos olores.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚿</div>
+      <div class="service-title">Destapes de baños</div>
+      <p class="service-desc">Inodoros, bachas, duchas, bañeras y todos los artefactos sanitarios. Destape garantizado.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚰</div>
+      <div class="service-title">Cámaras Sépticas</div>
+      <p class="service-desc">Destapación de cloacas, desagües y cañerías con equipos de alta presión. Servicio express disponible.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section" id="nosotros">
+  <div class="section-header">
+    <div class="section-label">Por qué elegirnos</div>
+    <h2>Tu Tranquilidad<br><span style="color:var(--accent)">Es Nuestra Prioridad</span></h2>
+    <p class="section-desc">Más de 15 años de experiencia nos respaldan. Comprometidos con la calidad y la honestidad en cada trabajo.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <div class="why-title">Respuesta Inmediata</div>
+      <p class="why-desc">Atendemos llamados y mensajes durante todo el día. Las emergencias no esperan, y nosotros tampoco.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <div class="why-title">Presupuesto Sin Cargo</div>
+      <p class="why-desc">Visitamos tu propiedad, evaluamos el trabajo y te entregamos un presupuesto detallado sin costo.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <div class="why-title">Garantía Escrita</div>
+      <p class="why-desc">Todos nuestros trabajos cuentan con garantía por escrito. Si algo falla, lo resolvemos sin costo adicional.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <div class="why-title">Materiales de Calidad</div>
+      <p class="why-desc">Usamos únicamente materiales de marcas reconocidas para asegurar durabilidad y buen funcionamiento.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section" id="proceso">
+  <div class="section-header">
+    <div class="section-label">Así trabajamos</div>
+    <h2>Proceso <span>Simple</span></h2>
+    <p class="section-desc">En cuatro pasos simples resolvemos tu problema de plomería de forma rápida y sin complicaciones.</p>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-circle">1</div>
+      <div class="step-title">Contacto</div>
+      <p class="step-desc">Llamanos o escribinos por WhatsApp describiendo el problema.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">2</div>
+      <div class="step-title">Diagnóstico</div>
+      <p class="step-desc">Visitamos tu propiedad y evaluamos el trabajo necesario.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">3</div>
+      <div class="step-title">Presupuesto</div>
+      <p class="step-desc">Te entregamos un precio claro y detallado, sin sorpresas.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">4</div>
+      <div class="step-title">Ejecución</div>
+      <p class="step-desc">Realizamos el trabajo con garantía y dejamos todo limpio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contacto">
+  <div class="section-header">
+    <div class="section-label">Hablemos</div>
+    <h2>Solicita Tu<br><span style="color:var(--accent)">Presupuesto</span></h2>
+    <p class="section-desc">Comunicate directamente. Respondemos a la brevedad.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon-box">📞</div>
+        <div>
+          <div class="contact-item-label">Teléfono / WhatsApp</div>
+          <div class="contact-item-val">11 2780-4960</div>
+          <div class="contact-item-sub">Disponible todos los días</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon-box">📍</div>
+        <div>
+          <div class="contact-item-label">Zona de servicio</div>
+          <div class="contact-item-val">CABA, Zona Sur, Zona Norte</div>
+          <div class="contact-item-sub">Y Aledaños</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon-box">🕐</div>
+        <div>
+          <div class="contact-item-label">Horario</div>
+          <div class="contact-item-val">Lunes a Domingo 24hs</div>
+          <div class="contact-item-sub">Emergencias: 24/7</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRABAJOS REALIZADOS -->
+<section class="section" id="trabajos">
+  <div class="section-header">
+    <div class="section-label">Nuestro trabajo habla por nosotros</div>
+    <h2>Trabajos <span>Realizados</span></h2>
+    <p class="section-desc">Algunas muestras de los trabajos que realizamos para nuestros clientes. Calidad y compromiso en cada proyecto.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <img src="trabajo1.jpeg" alt="Descripción del trabajo">
+        
+      
+      </div>
+      <div class="gallery-overlay"><span>Destapacion</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <img src="trabajo2.jpeg" alt="Descripción del trabajo">
+        
+    
+      </div>
+      <div class="gallery-overlay"><span>Destapacion</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gallery-placeholder-icon">📷</div>
+        <span>Foto de trabajo 3</span>
+      </div>
+      <div class="gallery-overlay"><span>Destape de bano</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gallery-placeholder-icon">📷</div>
+        <span>Foto de trabajo 4</span>
+      </div>
+      <div class="gallery-overlay"><span>Camara septica</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gallery-placeholder-icon">📷</div>
+        <span>Foto de trabajo 5</span>
+      </div>
+      <div class="gallery-overlay"><span>Instalacion sanitaria</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gallery-placeholder-icon">📷</div>
+        <span>Foto de trabajo 6</span>
+      </div>
+      <div class="gallery-overlay"><span>Mantenimiento preventivo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Drenaje Express<span>24hs</span></div>
+  <p>© 2024 Drenaje Express 24hs. Todos los derechos reservados.</p>
+  <p>Hecho por @Lkz.zzz en Buenos Aires</p>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = '✅ ¡Consulta enviada! Te contactamos pronto.';
+    btn.style.background = '#2ecc71';
+    btn.style.color = '#fff';
+    setTimeout(() => {
+      btn.textContent = 'Enviar Consulta →';
+      btn.style.background = '';
+      btn.style.color = '';
+      e.target.reset();
+    }, 4000);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.service-card, .why-card, .testi-card, .step, .contact-item, .gallery-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
